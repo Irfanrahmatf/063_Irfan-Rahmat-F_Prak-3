@@ -1,0 +1,46 @@
+package Latihan.Perbankkan;
+public class Tabungan {
+    private int saldo;
+    public Tabungan()  {
+    }
+    public int getSaldo() {
+        return saldo;
+    public void setSaldo (int val) {
+           this.saldo=val;
+    }
+}
+package Latihan.Perbankkan;
+public class PengambilanUang extends Tabungan{
+    private int proteksi;
+    public PengambilanUang (int Saldo) {    
+    }
+    Public PengambilanUang (int saldo, int tingkatBunga) {
+        super.setSaldo (saldo-tingkatBunga);
+        this.proteksi = tingkatBunga;
+        }
+        public int getSaldo(){
+            return super.getSaldo() + proteksi;
+            }
+            public boolean ambilUang (int jumlah){
+                if (jumlah <= super.getSaldo()){
+                super.setSaldo(super.getSaldo() -  jumlah);
+                return true;
+                }else{
+                return false;
+                }
+            }
+}
+import perbankan.*;
+public class TesTugas {
+public static void main(String args[]) {
+PengambilanUang tabungan=new PengambilanUang(5000,1000);
+System.out.println("Uang yang ditabung : 5000");
+System.out.println("Uang yang diproteksi : 1000");
+System.out.println("-----------------");
+System.out.println("Uang yang akan diambil : 4500 " +tabungan.ambilUang(4500)); 
+System.out.println("Saldosekarang : " + tabungan.getSaldo()); 
+System.out.println("-----------------"); 
+System.out.println("Uang yang akandiambil : 2500 " +tabungan.ambilUang(2500));
+System.out.println("Saldo sekarang : " +tabungan.getSaldo());
+}
+}
